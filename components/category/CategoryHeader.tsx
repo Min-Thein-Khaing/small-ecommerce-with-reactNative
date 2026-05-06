@@ -1,21 +1,23 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import React from "react";
-import Title from "../shop/Title";
-import Category from "./Category";
-import { Container } from "lucide-react-native";
 import { categories } from "@/data";
-import { ScrollView } from "react-native";
+import React from "react";
+import { View } from "react-native";
+import Title from "../shop/Title";
+import Category, { CategoryProps } from "./Category";
+
+import { FlashList } from "@shopify/flash-list";
 
 const CategoryHeader = () => {
   return (
     <View>
       <Title title="Shop by Category" btnTitle="See All" />
-      <FlatList
-        data={categories}
+      <FlashList
+        data={categories as CategoryProps[]} 
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <Category {...item} />}
         horizontal
         showsHorizontalScrollIndicator={false}
+        estimatedItemSize={75}
+        contentContainerStyle={{ paddingHorizontal: 15, paddingVertical: 10 }}
       />
     </View>
   );

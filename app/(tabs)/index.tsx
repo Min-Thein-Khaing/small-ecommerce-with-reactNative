@@ -1,4 +1,5 @@
 import CategoryHeader from "@/components/category/CategoryHeader";
+import RecommandProduct from "@/components/product/RecommandProduct";
 import Banner from "@/components/shop/Banner";
 import Cart from "@/components/shop/Cart";
 import { Image } from "expo-image";
@@ -24,6 +25,7 @@ export default function HomeScreen() {
       </View>
       <Banner />
       <CategoryHeader />
+      <RecommandProduct />
     </SafeAreaView>
   );
 }
