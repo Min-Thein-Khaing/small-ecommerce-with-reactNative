@@ -7,6 +7,8 @@ const ICON_MAPPING = {
   'cart': 'ShoppingCart',
   'code': 'CodeXml',
   'shopping-cart': 'ShoppingCart',
+  'star':'Star',
+  
 } as const; // 'as const' ထည့်ပေးမှ နာမည်တွေကို string အသေအဖြစ် မှတ်မှာပါ
 
 export type IconName = keyof typeof ICON_MAPPING;

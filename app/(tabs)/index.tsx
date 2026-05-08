@@ -23,9 +23,14 @@ export default function HomeScreen() {
         {/* Cart Icon and Badge Container */}
         <Cart />
       </View>
-      <Banner />
-      <CategoryHeader />
-      <RecommandProduct />
+
+      <RecommandProduct header={
+        <View>
+          <Banner />
+          <CategoryHeader />
+        </View>
+      } />
+
     </SafeAreaView>
   );
 }

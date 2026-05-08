@@ -5,19 +5,23 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 export interface CategoryProps {
   id: number;
   name: string;
-  image: string; // သို့မဟုတ် ImageSourcePropType
+  image: any;
+  isSelected?: boolean;
+  onPress?: () => void;
 }
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 
-const Category: FC<CategoryProps> = ({ id, name, image }) => {
+const Category: FC<CategoryProps> = ({ id, name, image, isSelected, onPress }) => {
   return (
     <View style={{ marginHorizontal: 15 }}>
-      <Pressable style={{ alignItems: "center", gap: 5 }}>
+      <Pressable
+        onPress={onPress}
+        style={{ alignItems: "center", gap: 2 }}
+      >
         <Image
-        key={id}
-          style={styles.image}
+          style={[styles.image, isSelected && styles.selectedHighlight]}
           source={image}
           placeholder={{ blurhash }}
           contentFit="cover"
@@ -29,12 +33,17 @@ const Category: FC<CategoryProps> = ({ id, name, image }) => {
   );
 };
 
-export default Category;
-
 const styles = StyleSheet.create({
   image: {
     width: 56,
     height: 56,
-    borderRadius: 30,
+    borderRadius: 28,
+    borderWidth: 3,
+    borderColor: "transparent",
   },
+  selectedHighlight: {
+    borderColor: "#fcba03",
+  }
 });
+
+export default React.memo(Category);
